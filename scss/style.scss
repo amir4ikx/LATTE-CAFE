@@ -1,0 +1,562 @@
+@import "./reset.scss";
+@import "./templates.scss";
+@import "./vars.scss";
+
+
+.header {
+    background-color: $primaryDark;
+
+    .nav {
+        .logo {
+            @media (max-width:576px) {
+                display: none;
+            }
+        }
+
+        padding-top: 45px;
+        @include flex(space-between, center, 0);
+
+        .burgermenu-wrap.burgermenu-clicked {
+            .burgermenu {
+                transform: translateX(-50px);
+                background-color: transparent;
+            }
+
+            .burgermenu::before {
+                transform: rotate(45deg) translate(40px, -10px);
+                margin-left: 10px;
+
+                @media (max-width:576px) {
+                    transform: rotate(45deg) translate(38px, -10px);
+                }
+            }
+
+            .burgermenu::after {
+                transform: rotate(-45deg) translate(25px, 40px);
+
+                @media (max-width: 768px) {
+                    transform: rotate(-45deg) translate(20px, 40px);
+                }
+
+                @media (max-width: 576px) {
+                    transform: rotate(-45deg) translate(20px, 40px);
+                }
+            }
+        }
+
+        .burgermenu-wrap {
+            @media (max-width: 768px) {
+                width: 50px;
+                height: 40px;
+            }
+
+            @media (max-width:576px) {
+                width: 40px;
+                height: 25px;
+            }
+
+            width: 65px;
+            height: 50px;
+            z-index: 10;
+            position: fixed;
+
+            .burgermenu {
+                transition: all .5s ease;
+                height: 10px;
+                width: 50px;
+                background-color: $primary;
+                border-radius: 12px;
+                transform: translateY(20px);
+
+                @media (max-width: 768px) {
+                    width: 40px;
+                    height: 7px;
+                }
+
+                @media (max-width: 576px) {
+                    width: 32px;
+                    height: 5px;
+                    transform: translateY(-5px);
+                }
+
+                &::before,
+                &::after {
+                    transition: all .5s ease;
+                    content: "";
+                    display: block;
+                    height: 10px;
+                    width: 65px;
+                    background-color: $primary;
+                    border-radius: 12px;
+
+                    @media (max-width: 768px) {
+                        width: 50px;
+                        height: 7px;
+                    }
+
+                    @media (max-width: 576px) {
+                        width: 40px;
+                        height: 5px;
+                    }
+                }
+
+                &::before {
+                    transform: translateY(-20px);
+
+                    @media (max-width: 768px) {
+                        transform: translateY(-15px);
+                    }
+
+                    @media (max-width:576px) {
+                        transform: translateY(-11px);
+                    }
+                }
+
+                &::after {
+                    transform: translateY(10px);
+
+                    @media (max-width: 768px) {
+                        transform: translateY(8px);
+                    }
+
+                    @media (max-width: 768px) {
+                        transform: translateY(5px);
+                    }
+                }
+            }
+
+        }
+
+        .burgermenu-non-active {
+            display: none;
+
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
+
+        .pull-out-menu {
+            position: fixed;
+            background-color: rgba(74, 43, 51, .7);
+            top: 0;
+            bottom: 0;
+            padding: 100px 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+            transition: .4s ease;
+            backdrop-filter: blur(3px);
+            width: 100%;
+
+            @media (max-width: 768px) {
+                right: 16%;
+            }
+
+            @media (max-width: 576px) {
+                padding: 0;
+            }
+
+            .pull-out-link {
+                @include font(22px, "Inter", 400, $primary, 24px, center, none);
+                transition: font .3s ease;
+
+                @media (max-width: 576px) {
+                    margin-left: 45px;
+                }
+
+                &:hover {
+                    text-shadow: 5px 5px 20px rgb(255, 109, 138);
+                }
+            }
+        }
+
+        .pull-out-non-active {
+            right: 100%;
+        }
+
+        .menu-links {
+            @include flex(space-between, center, 20px);
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+
+            .menu-link {
+                @include font(15px, "Inter", 400, $primary, 24px, auto, none);
+                transition: all .3s ease;
+
+                &:hover {
+                    color: rgb(255, 139, 162);
+                }
+            }
+        }
+
+        .logo {
+            @media (max-width: 768px) {
+                margin: 0 auto;
+            }
+        }
+
+        .social {
+            @include flex(space-between, center, 17px);
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+    }
+}
+
+.main-img {
+    padding: 45px 56px 36px 56px;
+
+    @media (max-width: 576px) {
+        padding: 10px 0 20px 0;
+    }
+}
+
+
+.about {
+    padding: 220px 0 244px 0;
+
+    h6 {
+        @include font(17px, "Azeret Mono", 700, $secondary, 21.6px, center, none);
+    }
+
+    p {
+        margin-top: 3px;
+        @include font(32px, "Inter", 400, $secondary, 44.8px, center, none);
+        max-width: 869px;
+        margin: 0 auto;
+
+        @media (max-width: 992px) {
+            @include font(28px, "Inter", 400, $secondary, 40px, center, none);
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            @include font(24px, "Inter", 400, $secondary, 30px, center, none);
+        }
+
+        @media (max-width: 576px) {
+            @include font(18px, "Inter", 400, $secondary, 24px, center, none);
+        }
+    }
+
+    @media (max-width: 1200px) {
+        padding: 160px 0 160px 0;
+    }
+
+    @media (max-width: 992px) {
+        padding: 140px 20px 90px 20px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 100px 20px 80px 20px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 75px 20px 60px 20px;
+    }
+}
+
+.menu {
+    .container {
+        padding: 120px 20px 120px 20px;
+        background-color: rgba(245, 245, 245, 1);
+        @include grid(1fr 1fr, auto, 97px);
+
+        .menu-description {
+            h6 {
+                @include font(18px, "Azeret Mono", 700, $secondaryLight, 21.6px, start, none);
+            }
+
+            p {
+                @include font(32px, "Inter", 400, $secondaryLight, 45px, start, none);
+                margin-top: 17px;
+
+                @media (max-width: 1200px) {
+                    font-size: 28px;
+                    margin-top: 12px;
+                }
+
+                @media (max-width: 992px) {
+                    @include font(24px, "Inter", 400, $secondary, 35px, auto, none);
+                }
+            }
+
+            .menu-btns {
+                margin-top: 63px;
+
+                .menu-btn {
+                    border: 2px solid $secondaryLight;
+                    color: $secondaryLight;
+                    padding: 17px 220px;
+                    margin-top: 12px;
+                    cursor: pointer;
+                    @include font(15px, "Inter", 400, $secondaryLight, 24px, center, none);
+
+                    @media (max-width: 1200px) {
+                        padding: 15px 140px;
+                    }
+
+                    @media (max-width: 992px) {
+                        white-space: nowrap;
+                    }
+
+                    @media (max-width: 576px) {
+                        padding: 8px 71px;
+                    }
+                }
+
+                .menu-btn-active {
+                    border: 2px solid $secondaryLight;
+                    color: $secondaryLight;
+                    background-color: $secondaryLight;
+                    padding: 17px 220px;
+                    margin-top: 12px;
+                    cursor: pointer;
+                    @include font(15px, "Inter", 400, #fff, 24px, center, none);
+
+                    @media (max-width: 1200px) {
+                        padding: 15px 140px;
+                    }
+                    @media (max-width: 576px) {
+                        padding: 8px 71px;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 1200px) {
+            padding: 120px 30px 120px 30px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+        @media (max-width: 576px) {
+            gap: 60px;
+            padding: 95px 30px 80px 30px;
+        }
+    }
+}
+
+.info {
+    h6 {
+        @include font(17px, "Azeret Mono", 700, #fff, 21.6px, center, none);
+
+        @media (max-width: 1200px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 992px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 16px;
+        }
+    }
+
+    p {
+        @include font(25px, "Inter", 400, #fff, 36.4px, center, none);
+        margin-top: 15px;
+
+        @media (max-width: 1200px) {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 992px) {
+            font-size: 18px;
+            line-height: 32px;
+        }
+
+        @media (max-width: 576px) {
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(170, 158, 84, 1);
+        padding: 120px 56px 135px 56px;
+
+        @media (max-width: 1200px) {
+            padding: 110px 56px 110px 56px;
+        }
+
+        @media (max-width: 768px) {
+            @include grid(1fr 1fr, 165px 165px, 0);
+        }
+
+        @media (max-width: 576px) {
+            padding: 95px 30px 75px 30px;
+        }
+
+        .hours {
+            .paragraph-bottom {
+                margin-top: 35px;
+
+                @media (max-width: 1200px) {
+                    margin-top: 20px;
+                }
+
+                @media (max-width: 992px) {
+                    margin-top: 16px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                grid-column: 1/3;
+                grid-row: 2;
+                margin-top: 20px;
+            }
+
+            @media (max-width: 576px) {
+                margin-top: 0px;
+            }
+        }
+
+        .mondays {
+            @media (max-width: 1200px) {
+                max-width: 230px;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 130px;
+                grid-column: 2;
+                grid-row: 1;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.gallery {
+    padding: 152px 36px 120px 36px;
+    display: none;
+
+    .container {
+        @include grid(1fr 1fr, 300px 300px, 40px);
+
+        .gallery-img-3 {
+            grid-column-start: 2/1;
+            grid-column-start: 2/2;
+        }
+    }
+}
+
+.booking {
+    .container {
+        padding: 133px 109px 139px 56px;
+        @include grid(4fr 1fr 3fr, auto, 0);
+        justify-content: space-between;
+        background-color: $primaryDark;
+
+        @media (max-width: 1200px) {
+            padding: 115px 109px 125px 56px;
+        }
+
+        @media (max-width: 992px) {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            padding: 100px 56px 110px 56px;
+        }
+
+        @media (max-width: 576px) {
+            padding: 100px 56px 56px 56px;
+        }
+
+        h3 {
+            @include font(47px, "Azeret Mono", 700, $primary, 62px, start, none);
+
+            @media (max-width: 992px) {
+                text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                @include font(40px, "Azeret Mono", 700, $primary, 50px, center, none);
+            }
+        }
+
+        p {
+            @include font(18px, "Inter", 400, $primary, 27px, start, none);
+
+            @media (max-width:1200px) {
+                grid-column: 3;
+                text-align: center;
+            }
+
+            @media (max-width: 992px) {
+                margin-top: 18px;
+            }
+
+            @media (max-width: 992px) {
+                text-align: start;
+            }
+        }
+    }
+}
+
+.footer {
+
+    .container {
+        padding: 52px 0 74px;
+        max-width: 650px;
+
+        @media (max-width: 768px) {
+            padding: 35px 0 50px;
+        }
+        @media (max-width: 576px) {
+            max-width: 320px;
+            @include grid(1fr 1fr,auto, 0);
+            justify-content: space-between;
+            padding: 25px 0 35px;
+        }
+
+        .footer-row {
+            @include flex(space-between, center, 32px);
+            margin-top: 7px;
+
+            @media (max-width: 768px) {
+                @include flex(space-evenly, center, 12px);
+            }
+            @media (max-width: 576px) {
+                @include flex(space-evenly, center, 12px);
+                flex-direction: column;
+            }
+
+            &:last-child {
+                margin-top: 16px;
+                gap: 16px;
+
+                .footer-link {
+                    color: rgba(109, 107, 103, 1);
+                }
+                @media (max-width: 576px) {
+                    display: none;
+                }
+            }
+
+            .footer-link {
+                transition: all .3s ease;
+                @include font(15px, "Inter", 400, $secondary, 22.4px, start, none);
+                @media (max-width: 576px) {
+                    @include font(12px, "Inter", 400, $secondary, 18px, start, none);
+                }
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

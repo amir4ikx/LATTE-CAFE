@@ -1,0 +1,22 @@
+@mixin flex($jc, $ai, $gap){
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap;
+}
+
+@mixin grid($gtc,$gtr,$gap){
+    display: grid;
+    grid-template-columns: $gtc;
+    grid-template-rows: $gtr;
+    gap: $gap;
+}
+@mixin font($fz,$ff,$fw,$cl,$lh,$ta,$td){
+    font-size: $fz;
+    font-family: $ff;
+    font-weight: $fw;
+    color: $cl;
+    line-height: $lh;
+    text-align: $ta;
+    text-decoration: $td;
+}
